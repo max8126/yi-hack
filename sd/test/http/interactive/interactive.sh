@@ -107,7 +107,7 @@ rtsp() {
 }
 
 record() {
-    RESULT="$(pgrep record_event)"
+    RESULT="$(pgrep mp4record)"
     if [ "${TOGGLE}" = "YES" ]; then    
       if [ "${RESULT:-null}" = null ]; then                                                                                 
          echo "Starting Motion Recording"                                                                                         
