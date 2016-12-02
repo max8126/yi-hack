@@ -319,12 +319,14 @@ sync
 ### Launch FTP server
 log "Start ftp server..."
 if [[ $(get_config FTP) == "yes" ]] ; then
+
   if [[ $(get_config DEBUG) == "yes" ]] ; then
       tcpsvd -vE 0.0.0.0 21 ftpd -w / > /${LOG_DIR}/log_ftp.txt 2>&1 &
   else
       tcpsvd -vE 0.0.0.0 21 ftpd -w / &
   fi
   sleep 1
+
   log "Check for ftp process : "
   ps | grep tcpsvd | grep -v grep >> ${LOG_FILE}
 fi
@@ -344,7 +346,9 @@ touch /home/hd1/test/http/motion
 
 # start the server
 if [[ $(get_config HTTP) == "yes" ]] ; then
+
   log "Start http server : server${HTTP_VERSION}..."
+
   if [[ $(get_config DEBUG) == "yes" ]] ; then
       ./server${HTTP_VERSION} 80  > /${LOG_DIR}/log_http.txt 2>&1 &
   else
@@ -430,6 +434,8 @@ if [[ $(get_config RTSP) == "yes" ]] ; then
 fi
 sleep 5
 
+cd /tmp/hd1/test/http/interactive
+./interactive.sh
 
 ### List the processes after startup
 log "Processes after startup :"
@@ -442,3 +448,7 @@ df -h >> ${LOG_FILE}
 ### to make sure log are written...
 
 sync
+
+
+
+
