@@ -58,7 +58,8 @@ log() {
 }
 
 get_config() {
-    grep "^$1=" /home/hd1/test/yi-hack.cfg  | cut -d"=" -f2
+    key=$1
+    grep $1 /home/hd1/test/config/yi-hack.cfg  | cut -d"=" -f2
 }
 
 boot_voice() {
@@ -197,7 +198,7 @@ done
 ### INFORMATION : the 'clic' 'clic' is done before this line
 
 ### we copy our wpa_supplicant file in /home
-cp /home/hd1/test/wpa_supplicant.conf /home/wpa_supplicant.conf
+cp /home/hd1/test/config/wpa_supplicant.conf /home/wpa_supplicant.conf
 
 
 ### Init logs
