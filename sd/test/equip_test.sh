@@ -388,10 +388,19 @@ sync
 
 ### Launch record event
 cd /home
+<<<<<<< HEAD
 if [[ $(get_config RECORD) == "yes" ]] ; then
   ./record_event &
   ./mp4record 60 &
 fi
+=======
+./record_event &
+./mp4record 60 &
+
+### Start motion detection & reporting
+log "Starting motion notification processes"
+/home/hd1/test/check_motion.sh $(get_config MOTION_NOTIFICATION_URL) > /${LOG_DIR}/log_motion.txt 2>&1 &
+>>>>>>> pr/9
 
 ### Some configuration
 
